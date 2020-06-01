@@ -46,6 +46,12 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<Пользователь %r>' % self.username
 
+
+class NameForm(FlaskForm):
+    name = StringField('Как к тебе обращаться?', validators=[DataRequired()])
+    submit = SubmitField('Отправить')
+
+#         return f'<Тэг #{self.id} {self.name}>'
 #
 # class Post(db.Model):
 #     __table__ = 'posts'
@@ -71,9 +77,4 @@ class User(UserMixin, db.Model):
 #     posts = relationship('Post', secondary=posts_tags_table, back_populates='tags')
 #
 #     def __repr__(self):
-#         return f'<Тэг #{self.id} {self.name}>'
 
-
-class NameForm(FlaskForm):
-    name = StringField('Как к тебе обращаться?', validators=[DataRequired()])
-    submit = SubmitField('Отправить')
